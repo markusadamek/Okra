@@ -1,0 +1,31 @@
+name: CI - Unit Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '11.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build the solution
+        run: dotnet build
+
+      - name: Run unit tests with report
+        run: dotnet test --configuration Release --no-build --logger "trx;LogFileName=TestResults.trx"
