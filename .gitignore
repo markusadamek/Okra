@@ -51,6 +51,9 @@ CodeCoverage/
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
 
+# Rider
+.idea/
+
 # NUnit
 *.VisualState.xml
 TestResult.xml

@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Okra.Results/Okra.Results.csproj" />
+  </Folder>
+  <Folder Name="/test/">
+    <File Path="test\Directory.Packages.props" />
+    <Project Path="test/Result.Tests/Result.Tests.csproj" />
+  </Folder>
+</Solution>
