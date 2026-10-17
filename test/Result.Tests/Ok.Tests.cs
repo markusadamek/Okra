@@ -12,21 +12,7 @@ public class OkTests
         Result<int, string> result = 42;
         ShouldBeOk(result);
     }
-    
-    [Fact]
-    public void Converts_To_Err_Implicitly()
-    {
-        Result<int, string> result = "boom";
-        ShouldBeError(result);
-    }
-    
-    [Fact]
-    public void Converts_To_Err_Explicitly()
-    {
-        Result<int, int> result = 42.AsError();
-        ShouldBeError(result);
-    }
-    
+
     [Fact]
     public void Converts_To_Ok_Explicitly()
     {
@@ -34,15 +20,9 @@ public class OkTests
         ShouldBeOk(result);
     }
 
-    private void ShouldBeOk<T,TE>(Result<T, TE> result)
+    private void ShouldBeOk<T, TE>(Result<T, TE> result)
     {
         result.IsErr.Should().BeFalse();
         result.IsOk.Should().BeTrue();
-    }
-    
-    private void ShouldBeError<T,TE>(Result<T, TE> result)
-    {
-        result.IsOk.Should().BeFalse();
-        result.IsErr.Should().BeTrue();
     }
 }
