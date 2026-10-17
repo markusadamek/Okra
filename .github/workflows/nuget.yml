@@ -1,0 +1,33 @@
+name: Build and Pack NuGet
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '11.0.0'
+
+      - name: Pack Okra.Results
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v} \
+          dotnet pack src/Okra.Results/Okra.Results.csproj \
+            --configuration Release \
+            --output packages \
+            -p:Version=$VERSION
+
+      - name: Upload NuGet Package
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuget-package
+          path: packages/*.nupkg
