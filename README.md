@@ -2,7 +2,7 @@
 
 **A Rust-inspired `Result` type for C# — errors as values, without leaving C# behind.**
 
-Okra brings the `Ok` / `Err` pattern to .NET as a lightweight `readonly struct`. No exceptions for expected failures, no `null` sentinel checks, no boolean-return-plus-out-parameter gymnastics. Just a value that says exactly what happened, and a compiler that helps you handle it.
+Okra brings the `Ok` / `Err` pattern to .NET as a lightweight union. No exceptions for expected failures, no `null` sentinel checks, no boolean-return-plus-out-parameter gymnastics. Just a value that says exactly what happened, and a compiler that helps you handle it.
 
 Named after the vegetable. It's short, it's memorable, and it starts with `Ok`.
 
