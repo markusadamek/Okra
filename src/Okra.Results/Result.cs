@@ -14,6 +14,15 @@ public union Result<T, TE>(Ok<T>, Err<TE>)
                };
     }
 
+    public T Unwrap(Exception ex)
+    {
+        return Value switch
+               {
+                   Ok<T> ok => ok.Value,
+                   _ => throw ex,
+               };
+    }
+
     public static implicit operator Result<T, TE>(T okValue) => okValue.AsOk();
     public static implicit operator Result<T, TE>(TE errorValue) => errorValue.AsError();
 
@@ -25,7 +34,7 @@ public union Result<T, TE>(Ok<T>, Err<TE>)
                    Err<TE> err => func(err)
                };
     }
-    
+
     public Result<TNew, TE> MapOk<TNew>(Func<T, TNew> func)
     {
         return Value switch

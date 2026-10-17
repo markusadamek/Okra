@@ -21,6 +21,15 @@ public class ResultTests
         Action unwrapped = () => result.Unwrap();
         unwrapped.Should().Throw<InvalidOperationException>();
     }
+    
+    [Fact]
+    public void Throws_Custom_Exception_When_Err_Unwrapped()
+    {
+        var ex = new Exception("test");
+        Result<int, string> result = "boom";
+        Action unwrapped = () => result.Unwrap(ex);
+        unwrapped.Should().ThrowExactly<Exception>("test");
+    }
 
     [Fact]
     public void Throws_When_Err_Unwrapped_With_Message()
