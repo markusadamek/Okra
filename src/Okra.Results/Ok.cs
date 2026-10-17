@@ -4,7 +4,8 @@ namespace Okra.Results;
 /// Represents a successful result that carries a value of type <typeparamref name="T"/>.
 /// </summary>
 /// <typeparam name="T">The type of the value contained in this result.</typeparam>
-public readonly record struct Ok<T>(T Value) {
+public readonly record struct Ok<T>(T Value)
+{
     /// <summary>
     /// Gets the value contained in this result.
     /// </summary>

@@ -137,13 +137,13 @@ public union Result<T, TE>(Ok<T>, Err<TE>)
     /// <returns>
     /// True if the result is ok, false if it's err.
     /// </returns>
-    public bool TryGetResult([MaybeNullWhen(false)]out T? o)
+    public bool TryGetResult([MaybeNullWhen(false)] out T? o)
     {
         o = this switch
-            {
-                Ok<T> ok => ok.Value,
-                _ => default
-            };
+        {
+            Ok<T> ok => ok.Value,
+            _ => default
+        };
         return o is Ok<T>;
     }
 }
